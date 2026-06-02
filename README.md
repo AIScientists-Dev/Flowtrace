@@ -53,6 +53,20 @@ Flowtrace also ships a **`make-trace` skill** at `skills/make-trace/`. Copy or s
 
 To hack on the tool, build it by hand: `cd frontend && npm install && npm run build && cd .. && cargo build --release`. Build the frontend first, since the UI is embedded into the Rust binary at compile time via `rust-embed`.
 
+### Shell Completions
+
+Generate shell completion scripts for your shell:
+
+```bash
+flowtrace completion bash
+flowtrace completion zsh
+flowtrace completion fish
+flowtrace completion powershell
+flowtrace completion elvish
+```
+
+You can save the generated script and load it according to your shell's completion documentation.
+
 ## Using a trace
 
 A trace is a visual DAG you and your AI both watch while the work runs. To drive one end-to-end:
@@ -114,6 +128,7 @@ flowtrace init nvda-decision      # creates nvda-decision/ with .git + an empty 
 flowtrace validate            # check the schema
 flowtrace show --fmt mermaid  # eyeball the DAG
 ```
+Available `--fmt` values: `json` (default), `ascii`, `mermaid`, `dot`.
 
 **3. Verify faithfulness (recommended).** Lifting is judgment, and judgment can flatten a fan-in/fan-out graph into a straight line that's wrong. Have a _second, independent_ agent check the DAG's edges and coverage against the source skill. Does every step appear? Is every dependency real? Was anything dropped? Fix what it finds. (The example took two rounds before an independent review returned "faithful & complete".)
 
