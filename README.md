@@ -54,6 +54,19 @@ cd flowtrace
 
 Updating: `git pull && ./scripts/install.sh`. Override the symlink target with `INSTALL_DIR=…`.
 
+Shell completions are built in:
+
+```bash
+# zsh
+mkdir -p ~/.zsh/completions
+flowtrace completion zsh > ~/.zsh/completions/_flowtrace
+
+# bash
+flowtrace completion bash > ~/.local/share/bash-completion/completions/flowtrace
+```
+
+The CLI also supports `fish`, `powershell`, and `elvish` completions via `flowtrace completion <shell>`.
+
 Flowtrace also ships a **`make-trace` skill** at `skills/make-trace/`. Copy or symlink it into your coding agent's skills directory (Claude Code, Codex, or Cursor) to author traces with `/make-trace`. See [Make your own](#make-your-own-trace).
 
 To hack on the tool, build it by hand: `cd frontend && npm install && npm run build && cd .. && cargo build --release`. Build the frontend first, since the UI is embedded into the Rust binary at compile time via `rust-embed`.
@@ -119,6 +132,8 @@ flowtrace init nvda-decision      # creates nvda-decision/ with .git + an empty 
 flowtrace validate            # check the schema
 flowtrace show --fmt mermaid  # eyeball the DAG
 ```
+
+`flowtrace show --fmt` also supports `ascii`, `dot`, and `json` output when you want a terminal tree, GraphViz source, or the raw trace structure.
 
 **3. Verify faithfulness (recommended).** Lifting is judgment, and judgment can flatten a fan-in/fan-out graph into a straight line that's wrong. Have a _second, independent_ agent check the DAG's edges and coverage against the source skill. Does every step appear? Is every dependency real? Was anything dropped? Fix what it finds. (The example took two rounds before an independent review returned "faithful & complete".)
 
