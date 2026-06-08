@@ -6,11 +6,13 @@
 
 **让 agent 跑一个任务的方式：透明、可复用、会进化。**
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](../LICENSE) [![Homepage](https://img.shields.io/badge/Homepage-morphmind.ai-lightgrey?style=flat-square)](https://morphmind.ai) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/x9mtbMEx) [![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/morphmind__ai?s=11)
+[![GitHub stars](https://img.shields.io/github/stars/AIScientists-Dev/flowtrace?style=flat-square&logo=github)](https://github.com/AIScientists-Dev/flowtrace/stargazers) [![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](../LICENSE) [![Homepage](https://img.shields.io/badge/Homepage-morphmind.ai-lightgrey?style=flat-square)](https://morphmind.ai) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/x9mtbMEx) [![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/morphmind__ai?s=11)
 
 [**它能做什么**](#它能做什么) · [**安装**](#安装) · [**怎么用**](#怎么用一个-trace) · [**自建 trace**](#做你自己的-trace) · [**示例**](EXAMPLES.zh-CN.md) · [**CLI**](trace/CLI.md)
 
 [English](../README.md) · **简体中文**
+
+⭐ **觉得 Flowtrace 有用，就给个 star** *(按钮在右上角)* —— 这是我们判断要不要继续公开打磨它的依据。
 
 </div>
 

@@ -6,11 +6,13 @@
 
 **A transparent, reusable, evolving way to run a task with your agent.**
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE) [![Homepage](https://img.shields.io/badge/Homepage-morphmind.ai-lightgrey?style=flat-square)](https://morphmind.ai) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/x9mtbMEx) [![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/morphmind__ai?s=11)
+[![GitHub stars](https://img.shields.io/github/stars/AIScientists-Dev/flowtrace?style=flat-square&logo=github)](https://github.com/AIScientists-Dev/flowtrace/stargazers) [![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE) [![Homepage](https://img.shields.io/badge/Homepage-morphmind.ai-lightgrey?style=flat-square)](https://morphmind.ai) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/x9mtbMEx) [![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/morphmind__ai?s=11)
 
 [**What it does**](#what-it-does) · [**Install**](#install) · [**Using a trace**](#using-a-trace) · [**Make your own**](#make-your-own-trace) · [**Examples**](docs/EXAMPLES.md) · [**CLI**](docs/trace/CLI.md)
 
 **English** · [简体中文](docs/README.zh-CN.md)
+
+⭐ **If Flowtrace looks useful, star it** *(button's top-right)* — it's how we decide what to keep building in the open.
 
 </div>
 
