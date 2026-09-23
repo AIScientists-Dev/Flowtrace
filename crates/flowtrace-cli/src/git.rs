@@ -1,8 +1,8 @@
 use anyhow::{Context, Result};
 use chrono::{DateTime, TimeZone, Utc};
+use flowtrace_core::state::Status;
 use fs2::FileExt;
 use git2::{ObjectType, Repository, RepositoryOpenFlags, Signature};
-use flowtrace_core::state::Status;
 use std::fs::OpenOptions;
 use std::path::{Path, PathBuf};
 
@@ -113,7 +113,6 @@ pub fn commit_files(root: &Path, msg: &str, files: &[&str]) -> Result<()> {
     let repo = open_or_init(root)?;
     // Serialize cross-process writes to this repo. Held until function exits.
     let _lock = CommitLock::acquire(&repo)?;
-    let mut index = repo.index().context("reading git index")?;
 
     let translate_one = |rel: &str| -> String {
         match repo_subpath(&repo, root) {
@@ -122,33 +121,55 @@ pub fn commit_files(root: &Path, msg: &str, files: &[&str]) -> Result<()> {
         }
     };
 
-    for f in files {
-        let translated = translate_one(f);
+    let translated_files: Vec<String> = files.iter().map(|f| translate_one(f)).collect();
+
+    // Build the commit tree from HEAD instead of the repository's live index.
+    // A trace can intentionally share an ancestor repository, and that index
+    // may contain unrelated user work which must stay staged and uncommitted.
+    let head_commit = repo.head().ok().and_then(|head| head.peel_to_commit().ok());
+    // `Index::new` cannot stat worktree paths because it has no repository
+    // backing. Keep a copy of the live entries, clear this repository index in
+    // memory, and do not write it until the commit tree has been constructed.
+    let mut index = repo.index().context("reading git index")?;
+    let saved_entries: Vec<_> = index.iter().collect();
+    index.clear().context("clearing isolated git index")?;
+    if let Some(parent) = head_commit.as_ref() {
+        let tree = parent.tree().context("reading HEAD tree")?;
         index
-            .add_path(Path::new(&translated))
+            .read_tree(&tree)
+            .context("loading HEAD into isolated git index")?;
+    }
+    for translated in &translated_files {
+        index
+            .add_path(Path::new(translated))
             .with_context(|| format!("staging {}", translated))?;
+    }
+
+    let tree_oid = index.write_tree().context("writing tree from index")?;
+
+    // Keep the caller's other staged entries intact while refreshing only the
+    // paths owned by this commit, matching the old post-commit index state.
+    index.clear().context("restoring live git index")?;
+    for entry in saved_entries {
+        index.add(&entry).context("restoring staged index entry")?;
+    }
+    for translated in &translated_files {
+        index
+            .add_path(Path::new(translated))
+            .with_context(|| format!("updating staged {}", translated))?;
     }
     index.write().context("writing git index")?;
 
-    let head = repo.head().ok();
-    let tree_oid = index.write_tree().context("writing tree from index")?;
-
     // No-op guard: tree unchanged vs HEAD.
-    if let Some(head_ref) = head.as_ref() {
-        if let Ok(parent_commit) = head_ref.peel_to_commit() {
-            if parent_commit.tree_id() == tree_oid {
-                return Ok(());
-            }
+    if let Some(parent_commit) = head_commit.as_ref() {
+        if parent_commit.tree_id() == tree_oid {
+            return Ok(());
         }
     }
 
     let tree = repo.find_tree(tree_oid)?;
     let sig = signature()?;
-    let parents: Vec<git2::Commit> = match head.as_ref() {
-        Some(h) => vec![h.peel_to_commit()?],
-        None => vec![],
-    };
-    let parent_refs: Vec<&git2::Commit> = parents.iter().collect();
+    let parent_refs: Vec<&git2::Commit> = head_commit.iter().collect();
     repo.commit(Some("HEAD"), &sig, &sig, msg, &tree, &parent_refs)
         .context("git commit")?;
     Ok(())
@@ -517,6 +538,42 @@ mod tests {
         commit_files(d.path(), "second", &["a.txt"]).unwrap();
         let sha2 = head_sha(d.path()).unwrap();
         assert_eq!(sha1, sha2, "no-op commit should not advance HEAD");
+    }
+
+    #[test]
+    fn init_nested_trace_does_not_commit_parent_index() {
+        let parent = tempdir().unwrap();
+        init(parent.path()).unwrap();
+        write(&parent.path().join("baseline.txt"), b"baseline");
+        commit_files(parent.path(), "baseline", &["baseline.txt"]).unwrap();
+        let parent_head = head_sha(parent.path()).unwrap();
+
+        write(&parent.path().join("unrelated.txt"), b"keep staged");
+        let parent_repo = Repository::open(parent.path()).unwrap();
+        let mut parent_index = parent_repo.index().unwrap();
+        parent_index.add_path(Path::new("unrelated.txt")).unwrap();
+        parent_index.write().unwrap();
+
+        let child = parent.path().join("probe-trace");
+        fs::create_dir_all(&child).unwrap();
+        write(&child.join("trace.json"), br#"{"id":"probe-trace"}"#);
+        init(&child).unwrap();
+        commit_files(&child, "initial trace", &["trace.json"]).unwrap();
+
+        let new_parent_head = head_sha(parent.path()).unwrap();
+        assert_ne!(new_parent_head, parent_head);
+        assert!(!child.join(".git").exists());
+        let parent_repo = Repository::open(parent.path()).unwrap();
+        let parent_commit = parent_repo.head().unwrap().peel_to_commit().unwrap();
+        let parent_tree = parent_commit.tree().unwrap();
+        assert!(parent_tree
+            .get_path(Path::new("probe-trace/trace.json"))
+            .is_ok());
+        assert!(parent_tree.get_path(Path::new("unrelated.txt")).is_err());
+        let parent_index = parent_repo.index().unwrap();
+        assert!(parent_index
+            .get_path(Path::new("unrelated.txt"), 0)
+            .is_some());
     }
 
     #[test]
