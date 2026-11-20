@@ -1,0 +1,71 @@
+{
+  "style": "read_style/style_rules.json",
+  "sections": {
+    "features": [
+      {
+        "pr": 412,
+        "text": "**Recurring tasks**: Set a task to repeat daily, weekly or monthly; the next one appears when you complete it."
+      },
+      {
+        "pr": 398,
+        "text": "**Search inside attachments**: Search now finds words inside attached PDF and Word files, not just card titles."
+      },
+      {
+        "pr": 405,
+        "text": "**Keyboard shortcuts**: Press ? to see every shortcut and get around your boards without the mouse."
+      }
+    ],
+    "improvements": [
+      {
+        "pr": 401,
+        "text": "**Faster sync**: Large boards sync about 2x faster (measured on a board with 2,000 cards)."
+      },
+      {
+        "pr": 409,
+        "text": "**Touch-friendly drag and drop**: Long-press a card to pick it up; the board scrolls for you near the edges."
+      },
+      {
+        "pr": 415,
+        "text": "**Richer CSV export**: Your exports now include custom fields."
+      }
+    ],
+    "fixes": [
+      {
+        "pr": 399,
+        "text": "Fixed large images (over 10 MB) failing to upload without a message; you can now compress them and retry."
+      },
+      {
+        "pr": 403,
+        "text": "Fixed reminders arriving an hour early after a daylight saving time change."
+      },
+      {
+        "pr": 407,
+        "text": "Fixed the notification badge not clearing after you read your notifications."
+      },
+      {
+        "pr": 411,
+        "text": "Fixed line breaks disappearing when you paste text from Google Docs."
+      },
+      {
+        "pr": 422,
+        "text": "Fixed dates showing in US format for people using English (UK)."
+      }
+    ],
+    "security": [
+      {
+        "pr": 418,
+        "text": "**Password changes sign out other devices**: Changing your password now signs you out everywhere else. Thanks to the external researcher who reported this."
+      },
+      {
+        "pr": 421,
+        "text": "**Expired sign-ins rejected**: Expired sign-ins are now always refused; before, some stayed valid for up to 24 hours."
+      }
+    ]
+  },
+  "left_to_review_breaking": [
+    420
+  ],
+  "notes": [
+    "#420 is written by review_breaking: it needs a What to do line, not a benefit"
+  ]
+}

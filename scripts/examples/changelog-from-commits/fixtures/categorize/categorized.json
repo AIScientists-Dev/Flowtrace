@@ -1,0 +1,93 @@
+{
+  "breaking": [
+    {
+      "pr": 420,
+      "sha": "cb3ca0d",
+      "subject": "feat(api)!: remove legacy v1 webhooks endpoint (#420)",
+      "why": "`!` marker plus a BREAKING CHANGE footer; removes a public API endpoint"
+    }
+  ],
+  "features": [
+    {
+      "pr": 412,
+      "sha": "f729927",
+      "subject": "feat(boards): recurring tasks (daily, weekly, monthly) (#412)"
+    },
+    {
+      "pr": 398,
+      "sha": "8bbade8",
+      "subject": "feat(search): search inside PDF and DOCX attachments (#398)"
+    },
+    {
+      "pr": 405,
+      "sha": "93b6bea",
+      "subject": "feat: keyboard shortcut cheat sheet on \"?\" (#405)"
+    }
+  ],
+  "improvements": [
+    {
+      "pr": 401,
+      "sha": "ec2c78f",
+      "subject": "perf(sync): batch delta uploads (#401)",
+      "why": "perf: an existing feature gets faster"
+    },
+    {
+      "pr": 409,
+      "sha": "dca8ed3",
+      "subject": "improve drag and drop on touch screens (#409)",
+      "why": "no conventional type; makes an existing interaction better"
+    },
+    {
+      "pr": 415,
+      "sha": "363a4c1",
+      "subject": "feat(export): CSV export includes custom fields (#415)",
+      "why": "tagged feat, but it extends the existing CSV export instead of adding a new capability"
+    }
+  ],
+  "fixes": [
+    {
+      "pr": 399,
+      "sha": "d604409",
+      "subject": "fix(upload): images over 10 MB failed silently (#399)"
+    },
+    {
+      "pr": 403,
+      "sha": "e2a48eb",
+      "subject": "fix(reminders): reminders fired an hour early after a DST change (#403)"
+    },
+    {
+      "pr": 407,
+      "sha": "8e7cf53",
+      "subject": "fix: notification badge count did not clear after reading (#407)"
+    },
+    {
+      "pr": 411,
+      "sha": "fe4172b",
+      "subject": "fix(editor): pasting from Google Docs lost line breaks (#411)"
+    },
+    {
+      "pr": 422,
+      "sha": "a5b97c3",
+      "subject": "fix(i18n): dates showed in US format for en-GB users (#422)"
+    }
+  ],
+  "security": [
+    {
+      "pr": 418,
+      "sha": "337c8ae",
+      "subject": "fix(auth): sign out other sessions when the password changes (#418)",
+      "why": "tagged fix, but the bug kept other devices signed in after a password change: account security"
+    },
+    {
+      "pr": 421,
+      "sha": "428479d",
+      "subject": "chore(deps): bump jwt-verify from 3.1.0 to 3.1.2 (#421)",
+      "why": "dependency patch for a published advisory about token expiry checks"
+    }
+  ],
+  "judgment_calls": [
+    "#415 moved from features to improvements",
+    "#418 moved from fixes to security",
+    "#421 kept as security instead of dropped as a routine dependency bump"
+  ]
+}

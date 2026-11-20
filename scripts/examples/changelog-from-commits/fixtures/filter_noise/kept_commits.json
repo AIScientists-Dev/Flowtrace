@@ -1,0 +1,150 @@
+{
+  "summary": {
+    "scanned": 25,
+    "kept": 14,
+    "dropped": 11
+  },
+  "kept": [
+    {
+      "sha": "f729927",
+      "pr": 412,
+      "subject": "feat(boards): recurring tasks (daily, weekly, monthly) (#412)",
+      "reason": "user-facing type (feat)"
+    },
+    {
+      "sha": "ec2c78f",
+      "pr": 401,
+      "subject": "perf(sync): batch delta uploads (#401)",
+      "reason": "user-facing type (perf)"
+    },
+    {
+      "sha": "d604409",
+      "pr": 399,
+      "subject": "fix(upload): images over 10 MB failed silently (#399)",
+      "reason": "user-facing type (fix)"
+    },
+    {
+      "sha": "8bbade8",
+      "pr": 398,
+      "subject": "feat(search): search inside PDF and DOCX attachments (#398)",
+      "reason": "user-facing type (feat)"
+    },
+    {
+      "sha": "e2a48eb",
+      "pr": 403,
+      "subject": "fix(reminders): reminders fired an hour early after a DST change (#403)",
+      "reason": "user-facing type (fix)"
+    },
+    {
+      "sha": "93b6bea",
+      "pr": 405,
+      "subject": "feat: keyboard shortcut cheat sheet on \"?\" (#405)",
+      "reason": "user-facing type (feat)"
+    },
+    {
+      "sha": "8e7cf53",
+      "pr": 407,
+      "subject": "fix: notification badge count did not clear after reading (#407)",
+      "reason": "user-facing type (fix)"
+    },
+    {
+      "sha": "dca8ed3",
+      "pr": 409,
+      "subject": "improve drag and drop on touch screens (#409)",
+      "reason": "no conventional type, but the subject describes a user-visible change"
+    },
+    {
+      "sha": "fe4172b",
+      "pr": 411,
+      "subject": "fix(editor): pasting from Google Docs lost line breaks (#411)",
+      "reason": "user-facing type (fix)"
+    },
+    {
+      "sha": "363a4c1",
+      "pr": 415,
+      "subject": "feat(export): CSV export includes custom fields (#415)",
+      "reason": "user-facing type (feat)"
+    },
+    {
+      "sha": "337c8ae",
+      "pr": 418,
+      "subject": "fix(auth): sign out other sessions when the password changes (#418)",
+      "reason": "user-facing type (fix)"
+    },
+    {
+      "sha": "cb3ca0d",
+      "pr": 420,
+      "subject": "feat(api)!: remove legacy v1 webhooks endpoint (#420)",
+      "reason": "user-facing type (feat)"
+    },
+    {
+      "sha": "428479d",
+      "pr": 421,
+      "subject": "chore(deps): bump jwt-verify from 3.1.0 to 3.1.2 (#421)",
+      "reason": "dependency bump whose body cites a security advisory: kept for the security review"
+    },
+    {
+      "sha": "a5b97c3",
+      "pr": 422,
+      "subject": "fix(i18n): dates showed in US format for en-GB users (#422)",
+      "reason": "user-facing type (fix)"
+    }
+  ],
+  "dropped": [
+    {
+      "sha": "436e0d5",
+      "subject": "chore: start v2.5.0 development",
+      "reason": "release housekeeping"
+    },
+    {
+      "sha": "de299c8",
+      "subject": "test(boards): e2e coverage for recurring tasks",
+      "reason": "tests only"
+    },
+    {
+      "sha": "c0b5c00",
+      "subject": "refactor(store): split board reducer into slices",
+      "reason": "internal refactor, no behavior change"
+    },
+    {
+      "sha": "f615c81",
+      "subject": "ci: cache pnpm store between runs",
+      "reason": "CI only"
+    },
+    {
+      "sha": "9ba560c",
+      "subject": "feat(ai): experimental AI task summaries (#408)",
+      "reason": "added and then reverted inside this range (#414): net zero for users"
+    },
+    {
+      "sha": "8b2f86a",
+      "subject": "docs: fix typo in CONTRIBUTING",
+      "reason": "contributor docs, not the product"
+    },
+    {
+      "sha": "f9b5954",
+      "subject": "Revert \"feat(ai): experimental AI task summaries (#408)\" (#414)",
+      "reason": "reverts #408 inside this range: drop the pair"
+    },
+    {
+      "sha": "7b80933",
+      "subject": "chore(deps-dev): bump eslint from 8.57.0 to 9.2.0 (#416)",
+      "reason": "dev-only dependency"
+    },
+    {
+      "sha": "b047ab8",
+      "subject": "test: stabilize flaky sync retry test",
+      "reason": "tests only"
+    },
+    {
+      "sha": "359be1f",
+      "subject": "Merge branch 'release/2.5'",
+      "reason": "merge commit; its changes are listed one by one"
+    },
+    {
+      "sha": "f246353",
+      "subject": "chore(release): v2.5.0",
+      "reason": "release housekeeping"
+    }
+  ]
+}
