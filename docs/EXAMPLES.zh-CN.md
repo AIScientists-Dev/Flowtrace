@@ -15,6 +15,7 @@
 | 📈 增长 / 营销 | 每周付费广告优化 |
 | 🧠 知识 / 人物 | 把一个人的思维蒸馏成 Skill |
 | 🖼 设计 / 演示 | 演讲 → 杂志风幻灯片 |
+| 📝 产品 / 发布 | 从提交生成更新日志 |
 
 **跑一个** —— ▶ *live*（真实用法）：对你的 agent 说一句 _"run this trace"_，喂你自己的输入，它会逐节点
 真正干活。▷ *demo*：`bash scripts/examples/<id>/build.sh` 回放一段预录的、仅作示意的运行；`flowtrace serve`
@@ -130,6 +131,18 @@
 
 ---
 
+<a id="changelog-from-commits"></a>
+
+## 📝 产品 / 发布 — 从提交生成更新日志
+
+把一次发布的 git log 变成用户真正会读的更新说明。提交历史和团队的风格指南并行读取，并且*先*过滤噪音、再分类：一个功能和它的回滚互相抵消，但修补了安全公告的依赖升级不算噪音。破坏性变更和安全修复单独走一条审查支线，因为它们欠读者升级步骤和谨慎的披露措辞；需要等维护者拍板的正是这个节点。*Demo：一个虚构应用的 v2.5.0，25 个提交 → 14 条条目。*
+
+**来源** [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)（`changelog-generator`） · **Demo** `bash scripts/examples/changelog-from-commits/build.sh`
+
+<img src="assets/examples/changelog-from-commits.png" alt="changelog-from-commits node map" width="266">
+
+---
+
 ## 来源致谢
 
 这些 trace 基于以下开源 skill 构建：
@@ -145,6 +158,7 @@
 | 每周付费广告优化 | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | MIT |
 | 把一个人的思维蒸馏成 Skill | [alchaincyf/nuwa-skill](https://github.com/alchaincyf/nuwa-skill)（花叔 / 女娲） | MIT |
 | 演讲 → 杂志风幻灯片 | [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill)（歸藏） | AGPL-3.0 ¹ |
+| 从提交生成更新日志 | [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)（`changelog-generator`） | Apache 2.0 |
 
 ¹ `talk-to-deck` 基于一个 AGPL-3.0 来源 —— 仅借鉴工作流（我们自己的渲染器，未拷贝任何源文件）。
 

@@ -1,0 +1,41 @@
+{
+  "header": {
+    "pattern": "## v{version} · {Month D, YYYY}",
+    "example": "## v2.5.0 · March 13, 2026"
+  },
+  "sections": [
+    "### ⚠️ Breaking Changes",
+    "### ✨ New Features",
+    "### 🔧 Improvements",
+    "### 🐛 Fixes",
+    "### 🔒 Security"
+  ],
+  "omit_empty_sections": true,
+  "voice": [
+    "talk to the reader as 'you'",
+    "present tense",
+    "lead with what the reader can now do",
+    "no internal names outside Breaking Changes",
+    "numbers only when measured: rounded, with the method"
+  ],
+  "entry_shapes": {
+    "features": "- **Name**: one sentence.",
+    "improvements": "- **Name**: one sentence.",
+    "fixes": "- Fixed ... (at most 120 characters before the PR link)"
+  },
+  "pr_link": "([#{n}](https://github.com/tallyboard/app/pull/{n}))",
+  "breaking": "every breaking change needs a 'What to do' line with the replacement and the version it has been available since",
+  "security": [
+    "state the impact and that it is fixed; never how to exploit it",
+    "credit external reporters only with their consent",
+    "a dependency update is a security entry only if it patches an advisory that affected Tallyboard"
+  ],
+  "lint_checks": [
+    "header matches the pattern",
+    "sections in order, empty ones omitted",
+    "fix lines at most 120 characters",
+    "every entry ends with a PR link",
+    "every breaking change has a What to do line",
+    "banned outside Breaking Changes: endpoint, ops, reducer, slice, jwt-verify"
+  ]
+}

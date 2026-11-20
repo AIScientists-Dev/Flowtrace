@@ -1,0 +1,120 @@
+{
+  "id": "changelog-from-commits",
+  "title": "Changelog from Commits",
+  "description": "Turn one release's git history into user-facing release notes. Faithful lift of the 'changelog-generator' SKILL.md (by ComposioHQ, awesome-claude-skills, Apache-2.0): its six 'What This Skill Does' moves become an 8-node DAG. Scanning the history and reading the house style guide run in parallel; noise filtering gates categorization; breaking changes and security fixes get their own review lane because they carry obligations (upgrade steps, disclosure wording) that ordinary entries don't; the formatter joins all three; release blurbs fan out from the finished changelog.",
+  "version": "0.1.0",
+  "steps": {
+    "scan_history": {
+      "name": "Scan History",
+      "does": "Pull every commit in the release range, normalized.",
+      "from_inputs": [
+        "git_log"
+      ],
+      "from_steps": [],
+      "assets": [
+        "commits.json"
+      ],
+      "asset_title": "Commit List"
+    },
+    "read_style": {
+      "name": "Read Style Guide",
+      "does": "Turn the house style guide into concrete voice and format rules.",
+      "from_inputs": [
+        "changelog_style"
+      ],
+      "from_steps": [],
+      "assets": [
+        "style_rules.json"
+      ],
+      "asset_title": "Style Rules"
+    },
+    "filter_noise": {
+      "name": "Filter Noise",
+      "does": "Drop internal commits: refactors, tests, CI, chores, reverted work.",
+      "from_inputs": [],
+      "from_steps": [
+        "scan_history"
+      ],
+      "assets": [
+        "kept_commits.json"
+      ],
+      "asset_title": "User-Facing Commits"
+    },
+    "categorize": {
+      "name": "Categorize Changes",
+      "does": "Group changes into features, improvements, fixes, breaking, and security.",
+      "from_inputs": [],
+      "from_steps": [
+        "filter_noise"
+      ],
+      "assets": [
+        "categorized.json"
+      ],
+      "asset_title": "Categorized Changes"
+    },
+    "review_breaking": {
+      "name": "Breaking & Security Review",
+      "does": "Confirm breaking and security changes; write upgrade and disclosure notes.",
+      "from_inputs": [],
+      "from_steps": [
+        "categorize"
+      ],
+      "assets": [
+        "breaking_security.md"
+      ],
+      "asset_title": "Upgrade & Security Notes"
+    },
+    "translate": {
+      "name": "User-Friendly Rewrite",
+      "does": "Rewrite each change as a plain-language user benefit.",
+      "from_inputs": [],
+      "from_steps": [
+        "categorize",
+        "read_style"
+      ],
+      "assets": [
+        "entries.json"
+      ],
+      "asset_title": "User-Facing Entries"
+    },
+    "format_changelog": {
+      "name": "Format Changelog",
+      "does": "Assemble the release section in house format, then lint it.",
+      "from_inputs": [],
+      "from_steps": [
+        "translate",
+        "review_breaking",
+        "read_style"
+      ],
+      "assets": [
+        "CHANGELOG.md"
+      ],
+      "asset_title": "Changelog"
+    },
+    "release_blurbs": {
+      "name": "Release Blurbs",
+      "does": "Derive app-store, email, and social copy from the changelog.",
+      "from_inputs": [],
+      "from_steps": [
+        "format_changelog"
+      ],
+      "assets": [
+        "blurbs.md"
+      ],
+      "asset_title": "Release Blurbs"
+    }
+  },
+  "deliverable": {
+    "description": "User-facing release notes (CHANGELOG.md) with upgrade and security notes, ready-to-post release blurbs, plus the filter log that shows which commits were left out and why.",
+    "assets": [
+      "format_changelog/CHANGELOG.md",
+      "release_blurbs/blurbs.md",
+      "review_breaking/breaking_security.md",
+      "filter_noise/kept_commits.json"
+    ]
+  },
+  "environment": {
+    "python": [],
+    "r": []
+  }
+}

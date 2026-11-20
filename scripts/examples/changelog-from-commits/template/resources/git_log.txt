@@ -1,0 +1,173 @@
+commit f246353a39ead0ed4234a341ac96be62bf042735
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Fri Mar 13 12:05:00 2026 +0000
+
+    chore(release): v2.5.0
+
+commit 359be1f804d80ad7a337541fc41a27ec13ff8530
+Merge: b047ab8 7f23ee1
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Fri Mar 13 11:40:00 2026 +0000
+
+    Merge branch 'release/2.5'
+
+commit b047ab84cb4c62aedcbdd1224038d31df6055e67
+Author: Priya Raman <priya@tallyboard.example>
+Date:   Fri Mar 13 09:22:00 2026 +0000
+
+    test: stabilize flaky sync retry test
+
+commit a5b97c30087c2248fd248ee7cc92f92c3bfa7d33
+Author: Ines Duarte <ines@tallyboard.example>
+Date:   Thu Mar 12 16:07:00 2026 +0000
+
+    fix(i18n): dates showed in US format for en-GB users (#422)
+
+commit 428479ddc675ee19b50f58341e4fb1ec838c97cb
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Thu Mar 12 13:33:00 2026 +0000
+
+    chore(deps): bump jwt-verify from 3.1.0 to 3.1.2 (#421)
+
+    Release notes (3.1.2):
+    - security: expired tokens were accepted for up to 24 hours when
+      the clock-skew option was left at its default (advisory).
+
+commit cb3ca0d59891ef198d2751315f52962120c6fd4f
+Author: Priya Raman <priya@tallyboard.example>
+Date:   Thu Mar 12 10:18:00 2026 +0000
+
+    feat(api)!: remove legacy v1 webhooks endpoint (#420)
+
+    BREAKING CHANGE: /api/v1/webhooks is removed. Integrations must use
+    /api/v2/webhooks (available since 2.2.0). v2 payloads are signed;
+    see docs/webhooks.md for the migration guide.
+
+commit 337c8aec28c0164198c7759474010c38ad4e8865
+Author: Sam Whitfield <sam@tallyboard.example>
+Date:   Wed Mar 11 14:44:00 2026 +0000
+
+    fix(auth): sign out other sessions when the password changes (#418)
+
+    Before this change, sessions on other devices stayed signed in
+    after a password change. Reported by an external researcher.
+
+commit 7b809339366153abb9f4e563e3f39e6713673ea7
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Mar 11 11:15:00 2026 +0000
+
+    chore(deps-dev): bump eslint from 8.57.0 to 9.2.0 (#416)
+
+commit 363a4c1ae23b3ea585082a708da85e6fdd86b938
+Author: Maya Okafor <maya@tallyboard.example>
+Date:   Wed Mar 11 09:51:00 2026 +0000
+
+    feat(export): CSV export includes custom fields (#415)
+
+commit f9b59543dc5a581b9e39367631eb4cb692f31724
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Tue Mar 10 16:20:00 2026 +0000
+
+    Revert "feat(ai): experimental AI task summaries (#408)" (#414)
+
+    Pulled from 2.5.0: summary quality is not ready yet.
+
+commit fe4172ba7932344272fc866b254620f6f6b5fe28
+Author: Ines Duarte <ines@tallyboard.example>
+Date:   Tue Mar 10 12:37:00 2026 +0000
+
+    fix(editor): pasting from Google Docs lost line breaks (#411)
+
+commit 8b2f86a064ae15c6a9416fd8fab7117596b741d4
+Author: Priya Raman <priya@tallyboard.example>
+Date:   Tue Mar 10 10:02:00 2026 +0000
+
+    docs: fix typo in CONTRIBUTING
+
+commit dca8ed3261bfc0b3d6fb1d8f869fec74493ab4f5
+Author: Maya Okafor <maya@tallyboard.example>
+Date:   Mon Mar 9 15:49:00 2026 +0000
+
+    improve drag and drop on touch screens (#409)
+
+    Long-press to pick up a card; the board auto-scrolls near the edges.
+
+commit 9ba560c221e6358bfa59753f40cb78591ec2d22b
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Mon Mar 9 11:26:00 2026 +0000
+
+    feat(ai): experimental AI task summaries (#408)
+
+commit 8e7cf53e34d185e80bb6b4e3fbf8c5cd881f0042
+Author: Sam Whitfield <sam@tallyboard.example>
+Date:   Mon Mar 9 09:08:00 2026 +0000
+
+    fix: notification badge count did not clear after reading (#407)
+
+commit 93b6bea9f03c986bc7eb3b1a5beff4c6cb08af9b
+Author: Ines Duarte <ines@tallyboard.example>
+Date:   Fri Mar 6 14:55:00 2026 +0000
+
+    feat: keyboard shortcut cheat sheet on "?" (#405)
+
+commit e2a48eb1adbc3da8396cd63071776195674de205
+Author: Sam Whitfield <sam@tallyboard.example>
+Date:   Fri Mar 6 10:41:00 2026 +0000
+
+    fix(reminders): reminders fired an hour early after a DST change (#403)
+
+commit f615c81b86b193f6f3e0decb5aa374c28be53626
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Thu Mar 5 13:12:00 2026 +0000
+
+    ci: cache pnpm store between runs
+
+commit 8bbade8f3d6814a22a1d7fa1f1c27b1cc7b5d1bd
+Author: Ines Duarte <ines@tallyboard.example>
+Date:   Thu Mar 5 09:30:00 2026 +0000
+
+    feat(search): search inside PDF and DOCX attachments (#398)
+
+commit c0b5c001f8684976b19f7ae76f2f98109aa5caa1
+Author: Priya Raman <priya@tallyboard.example>
+Date:   Wed Mar 4 17:03:00 2026 +0000
+
+    refactor(store): split board reducer into slices
+
+commit d604409c77c4586ccbda236cb7107daee05ce427
+Author: Sam Whitfield <sam@tallyboard.example>
+Date:   Wed Mar 4 11:47:00 2026 +0000
+
+    fix(upload): images over 10 MB failed silently (#399)
+
+    Show an error and offer to compress the image before retrying.
+
+commit ec2c78fc70a54a33e71760344dfec5bf8eaadc4e
+Author: Priya Raman <priya@tallyboard.example>
+Date:   Tue Mar 3 16:22:00 2026 +0000
+
+    perf(sync): batch delta uploads (#401)
+
+    Send up to 200 ops per request instead of one request per op.
+    Benchmark (2k-card board, cold sync): 9.8s -> 4.1s.
+
+commit de299c8ccc70e9174c0ef828682e29d001d3187e
+Author: Maya Okafor <maya@tallyboard.example>
+Date:   Tue Mar 3 10:05:00 2026 +0000
+
+    test(boards): e2e coverage for recurring tasks
+
+commit f72992753326055bcd51a27bf7773daefef2c05e
+Author: Maya Okafor <maya@tallyboard.example>
+Date:   Mon Mar 2 15:40:00 2026 +0000
+
+    feat(boards): recurring tasks (daily, weekly, monthly) (#412)
+
+    A task can now repeat on a schedule. When you complete it, the next
+    occurrence is created with the same assignees, labels and checklist.
+
+commit 436e0d502f375ffd8a38b7b5e4838f6010e0e6ae
+Author: Leo Brandt <leo@tallyboard.example>
+Date:   Mon Mar 2 09:14:00 2026 +0000
+
+    chore: start v2.5.0 development

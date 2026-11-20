@@ -139,7 +139,7 @@ Update with `git pull && ./scripts/install.sh`. Override the symlink target with
 </tr></table>
 </div>
 
-Plus six more:
+Plus seven more:
 
 - Career: [Tailored Résumé Generator](docs/EXAMPLES.md#tailored-resume)
 - Investing: [Comprehensive Stock Analysis](docs/EXAMPLES.md#nvda-decision)
@@ -147,6 +147,7 @@ Plus six more:
 - Software engineering: [Bug-Fix Learning Loop](docs/EXAMPLES.md#swe-bugfix)
 - Growth / marketing: [Weekly Paid-Ads Optimization](docs/EXAMPLES.md#paid-ads)
 - Design / decks: [Talk → Magazine Slide Deck](docs/EXAMPLES.md#talk-to-deck)
+- Product / releases: [Changelog from Commits](docs/EXAMPLES.md#changelog-from-commits)
 
 ## Documentation
 

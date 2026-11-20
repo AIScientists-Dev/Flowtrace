@@ -139,7 +139,7 @@ cd flowtrace
 </tr></table>
 </div>
 
-另外还有六个：
+另外还有七个：
 
 - 求职：[定制简历生成器](EXAMPLES.zh-CN.md#tailored-resume)
 - 投资：[全面股票分析](EXAMPLES.zh-CN.md#nvda-decision)
@@ -147,6 +147,7 @@ cd flowtrace
 - 软件工程：[Bug 修复学习闭环](EXAMPLES.zh-CN.md#swe-bugfix)
 - 增长 / 营销：[每周付费广告优化](EXAMPLES.zh-CN.md#paid-ads)
 - 设计 / 演示：[演讲 → 杂志风格幻灯片](EXAMPLES.zh-CN.md#talk-to-deck)
+- 产品 / 发布：[从提交生成更新日志](EXAMPLES.zh-CN.md#changelog-from-commits)
 
 ## 文档
 

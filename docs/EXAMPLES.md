@@ -15,6 +15,7 @@ A gallery of example traces — each built from a popular open-source agent skil
 | 📈 Growth / marketing | Weekly Paid-Ads Optimization |
 | 🧠 Knowledge / personas | Distill a Mind into a Skill |
 | 🖼 Design / decks | Talk → Magazine Slide Deck |
+| 📝 Product / releases | Changelog from Commits |
 
 **Run one** — ▶ *live* (the real use): tell your agent _"run this trace"_ on your own input, and it does each
 node's work for real. ▷ *demo*: `bash scripts/examples/<id>/build.sh` replays a pre-recorded, illustrative
@@ -131,6 +132,18 @@ Turn raw content into a single-file HTML magazine deck — pick a visual system,
 
 ---
 
+<a id="changelog-from-commits"></a>
+
+## 📝 Product / releases — Changelog from Commits
+
+Turn a release's git log into notes your users will actually read. The history and the house style guide are read in parallel, and noise is filtered *before* categorizing: a feature and its revert cancel out, but a dependency bump that patches an advisory is not noise. Breaking changes and security fixes get their own review lane, because they owe readers upgrade steps and careful disclosure wording; that is the node that waits for a maintainer. *Demo: a fictional app's v2.5.0, 25 commits → 14 entries.*
+
+**Source** [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) (`changelog-generator`) · **Demo** `bash scripts/examples/changelog-from-commits/build.sh`
+
+<img src="assets/examples/changelog-from-commits.png" alt="changelog-from-commits node map" width="266">
+
+---
+
 ## Source attribution
 
 The open-source skills these traces are built from:
@@ -146,6 +159,7 @@ The open-source skills these traces are built from:
 | Weekly Paid-Ads Optimization | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | MIT |
 | Distill a Mind into a Skill | [alchaincyf/nuwa-skill](https://github.com/alchaincyf/nuwa-skill) (花叔 / 女娲) | MIT |
 | Talk → Magazine Slide Deck | [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill) (歸藏) | AGPL-3.0 ¹ |
+| Changelog from Commits | [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) (`changelog-generator`) | Apache 2.0 |
 
 ¹ `talk-to-deck` builds on an AGPL-3.0 source — workflow only (our own renderer, no source files copied).
 
